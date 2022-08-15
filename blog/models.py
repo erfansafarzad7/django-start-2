@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+from django.urls import reverse
 
 # class PostManager(models.Manager):
 #     def year_filter(self, year):
@@ -29,10 +29,11 @@ class Post(models.Model):
     objects = models.Manager()
     published = PublishedManager()
 
+    def uniq_url(self):
+        return reverse('blog:details', args=[self.slug, self.publish.year, self.publish.month])
 
     class Meta:
         ordering = ('-publish',)
-
 
     def __str__(self):
         return self.title
