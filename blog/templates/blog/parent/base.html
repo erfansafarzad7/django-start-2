@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{#}For Static Files (css, js, ..){#}
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %} {% endblock %}</title>
+  {#} If Page Have a Style, Most Insert Next This Line {#}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  {% block link %} {% endblock %}
+</head>
+<body>
+{% include 'blog/partials/header.html' %}
+{% include 'blog/partials/navigation.html' %}
+
+{% block content %} {% endblock %}
+
+{% include 'blog/partials/pagination.html' %}
+{% include 'blog/partials/footer.html' %}
+</body>
+</html>

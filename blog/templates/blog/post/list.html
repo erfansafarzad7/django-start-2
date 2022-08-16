@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List</title>
-</head>
-<body>
+{% extends 'blog/parent/base.html' %}
+{% load static %}
+
+{% block content %}
 {% for post in posts %}
     <a href="{{ post.uniq_url }}"><h1>{{post.title}}</h1></a>
     <p>{{post.author}}</p>
     <br/>
 {% endfor %}
-</body>
-</html>
+{% endblock %}

@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{post.title}} Details</title>
-</head>
-<body>
-<h3>{{post.title}} : {{post.author}}</h3><br/>
-<p>{{post.body}}</p><br/>
-<p>{{post.publish}}</p>
-</body>
-</html>
+{% extends 'blog/parent/base.html' %}
+
+<!-- Css For This Page -->
+{% load static %}
+{% block link %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/details.css' %}">
+{% endblock %}
+
+{% block title %} blog: {{post.title}} {% endblock %}
+{% block content %}
+  <h3>{{post.title}} : {{post.author}}</h3><br/>
+  <p>{{post.body}}</p><br/>
+  <p>{{post.publish}}</p>
+{% endblock %}
