@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from .models import Post
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 
@@ -11,7 +12,17 @@ from .models import Post
 def post_list(request):
     # post = Post.objects.filter(status='published')
     posts = Post.published.all()
-    return render(request, 'blog/post/list.html', {'posts':posts})
+    paginator = Paginator(posts,1)
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, 'blog/post/list.html', {'posts':posts, 'page':page})
 
 
 def details(request, title, year, month):

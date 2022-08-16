@@ -7,4 +7,5 @@
     <p>{{post.author}}</p>
     <br/>
 {% endfor %}
+{% include 'blog/partials/pagination.html' with page=posts %}
 {% endblock %}
