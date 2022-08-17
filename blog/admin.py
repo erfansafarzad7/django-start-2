@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Post, Account
+from .models import Post, NewAccount
 
 # admin.site.register(Post)
 
+# Create Post Table In Admin
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'slug', 'publish', 'status')
@@ -15,6 +16,7 @@ class PostAdmin(admin.ModelAdmin):
     list_editable = ('status',)
     list_display_links = ('title', 'slug',)
 
-@admin.register(Account)
+# Create AccountName Table In Admin
+@admin.register(NewAccount)
 class AccountAdmin(admin.ModelAdmin):
     list_display = ('name',)

@@ -11,7 +11,7 @@ class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset().filter(status='published')
 
-
+# Create Fields For Post
 class Post(models.Model):
     STATUS_CHOICES = (
         ('drafed', 'Draft'),
@@ -38,6 +38,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
-class Account(models.Model):
+# Create Fields For NewName
+class NewAccount(models.Model):
     name = models.CharField(max_length=20)

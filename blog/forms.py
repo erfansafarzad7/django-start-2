@@ -1,8 +1,8 @@
 from django import forms
-from .models import Account
+from .models import NewAccount
 
-
-class AccountForm(forms.ModelForm):
+# Form For Add Account In AdminPanel
+class NewAccountForm(forms.ModelForm):
     class Meta:
-        model = Account
+        model = NewAccount
         fields = ('name',)

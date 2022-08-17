@@ -4,7 +4,7 @@ from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 from django import forms
-from .forms import AccountForm
+from .forms import NewAccountForm
 
 
 
@@ -40,11 +40,12 @@ def details(request, title, year, month):
     post = get_object_or_404(Post, status='published', slug=title, publish__year=year, publish__month=month)
     return render(request, 'blog/post/details.html', {'post' : post})
 
-def user_acc(request):
+# Create New Form (and Send To Add a Name In Admin/New Accounts)
+def new_account(request):
     if request.method == 'POST':
-        form = AccountForm(data=request.POST)
+        form = NewAccountForm(data=request.POST)
         if form.is_valid():
             form.save()
     else:
-        form = AccountForm()
-    return render(request, 'blog/forms/acc_form.html', {'form' : form})
+        form = NewAccountForm()
+    return render(request, 'blog/forms/new_account.html', {'form' : form})
